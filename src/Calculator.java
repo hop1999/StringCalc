@@ -11,8 +11,8 @@ class Calculator {
         String operator = parts[1];
 
         if (operator.equals("*") || operator.equals("/")) {
-            if (!left.matches("\"[^\"]+\"")) {
-                throw new IllegalArgumentException("Левый операнд должен быть строкой, заключенной в двойные кавычки");
+            if (!left.matches("\"[^\"]+\"") || (Integer.parseInt(right) < 1 || Integer.parseInt(right) > 10)) {
+                throw new IllegalArgumentException("Неверный формат операндов для оператора " + operator);
             }
             left = left.substring(1, left.length() - 1);
         } else {
